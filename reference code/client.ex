@@ -1,4 +1,4 @@
-{:ok, socket} = :gen_tcp.connect('127.0.0.1', 25567, [{:active, false},{:packet,2}])
+{:ok, socket} = :gen_tcp.connect('127.0.0.1', 25567, [:binary, packet: :line, active: false, reuseaddr: true])
 :ok = :gen_tcp.send(socket, "hi\n")
 {x, data} = :gen_tcp.recv(socket,0)
 IO.puts(data)
